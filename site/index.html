@@ -1,53 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A memorial site for Kate Koski.">
     <title>Kate Koski Memorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@0;1&display=swap" rel="stylesheet">
+
+    <!--
+        #bab58a
+        #422f1d
+        #e1d4c1
+        #344428
+        #7d5233
+    -->
+
     <style>
+        :root {
+            --background: #e1d4c1;
+            /* Light beige */
+            --highlight: #bab58a;
+            /* Warm gray */
+            --text: #422f1d;
+            /* Dark brown */
+            --accent: #7d5233;
+            /* Medium brown */
+            --secondary: #344428;
+            /* Dark green */
+
+            --text-background: color-mix(in srgb, var(--background) 40%, white 60%);
+        }
+
         body {
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            margin: 0;
-            padding: 0;
+            align-items: center;
+            background-color: var(--background);
+            color: var(--text);
             display: flex;
+            flex-direction: column;
+            font-family: "Lato", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.4rem;
+            justify-content: center;
+            margin: 0;
+            padding: 2rem 0;
+        }
+
+        p {
+            margin-block-start: 0;
+            width: 100%;
+        }
+
+        p.quote {
+            font-style: italic;
+            margin-left: 1rem;
+            margin-right: 2rem;
+            width: unset;
+        }
+
+        header {
+            margin-top: 2rem;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
+
         .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 90%;
+            align-items: center;
+            background-color: var(--text-background);
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 50rem;
+            padding: 2rem;
+            width: 100%;
         }
+
+        header.container {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            padding-bottom: 0;
+        }
+
+
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #2c3e50;
+            text-align: center;
         }
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            color: #555;
+
+        .header-image {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 14rem;
         }
-        footer {
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #888;
+
+        main {
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        main.container {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            padding-top: 0;
+        }
+
+        aside {
+            color: var(--text);
+            width: 100%;
+            max-width: 50rem;
+            padding: 2rem;
+        }
+
+        aside.container {
+            padding: 2rem;
+            background-color: var(--highlight);
+        }
+
+        aside p {
+            margin-bottom: 1rem;
+            font-style: italic;
+            /* Subtle stylistic variation for text */
+        }
+
+        aside form {
+            background-color: var(--text-background);
+            padding: 1.5rem;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            width: calc(100% - 2rem);
+            border-radius: 1rem;
+        }
+
+
+        label {
+            display: inline;
+            margin-bottom: 0.25rem;
+            margin-left: 0.1rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input[type=checkbox] {
+            display: inline-grid;
+            width: 1.5rem;
+            height: 1.5rem;
+            appearance: none;
+            border: black 1px solid;
+            place-content: center;
+        }
+
+        input[type=checkbox]::before {
+            content: "✔";
+            color: var(--text-background);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            background-color: var(--accent);
+            color: var(--text-background);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: block;
+            font-family: "Lato", serif;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: var(--secondary);
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>In Memory of Kate Koski</h1>
-        <p>Welcome to KateKoski.page, a site dedicated to preserving the memory and celebrating the life of Kate Koski. Please check back soon as we create a space to honor her legacy, share cherished memories, and reflect on the impact she had on the lives of those who knew her.</p>
-        <footer>&copy; 2024 KateKoski.page</footer>
-    </div>
+    <header class="container">
+        <img class="header-image" src="./img/kate-koski.jpeg" alt="Kate Koski">
+        <h1>Kate Koski (1943-2024)</h1>
+    </header>
+    <main class="container">
+        <p>On July 4, 2024, Kate Koski (née Mary Kathleen Moore, nickname “Kathey”) died peacefully in her home,
+            after being surrounded by family and friends.</p>
+        <p>She was born on September 24, 1943, at Ft. Warren, Wyoming. Over the next eight years, she moved with her
+            family to Ft. Collins, CO; Chevy Chase, MD; Ft. Lewis, WA; Elmendorf Air Force Base, AK (where, at the
+            age of six, she met her lifetime friend and future sister-in-law, Zelda Rippe); and Los Gatos, CA, where
+            her father retired from the Army.</p>
+        <p>She spent the next nine years there, except for her sophomore year, when she and her parents lived in
+            Malaga, Spain. There she developed a life-long fascination with the country and its language, becoming
+            fluent in Spanish. She graduated from Los Gatos High School in 1960, then moved to Spain for several
+            years, working and studying, before returning to work in California and then Massachusetts. There she
+            met Neal Koski, and the two became partners, with Kate taking his surname. Their work took them to Utah,
+            where their son, Rendall, was born (1969), and from there to Seattle and eventually to San Francisco.
+        </p>
+        <p>In 1978, they moved to Virginia, and separated the next year, Kate moving to Springfield, MA with
+            Rendall. After completing her bachelor’s degree at Springfield College, Kate moved to Newfane, VT, to
+            get her Masters Degree from the School for International Training. She moved back to Springfield to
+            study at the University of Massachusetts Amherst’s University Without Walls (UWW), where she earned a
+            doctorate in education. With her background in Spanish studies, she focused on intercultural
+            communications in a workplace environment, becoming a consultant for businesses. She also taught courses
+            for several years at UWW, and started a program of community outreach for disadvantaged students.</p>
+        <p>On August 22, 1998, she married her long-time romantic partner, Rich Provencher, and moved to Enfield,
+            CT. She continued to do her consulting and teaching until 2012, when she and Rich retired to Pine Run in
+            Osprey, FL. For several years prior to that, the two of them had spent several winters snowbirding at
+            the Yacht Club Apartments in Venice, FL, where they fell in love with that area of Florida.</p>
+        <p>She became actively involved in community activities in Pine Run, serving on the condo board for over ten
+            years. She researched and presented two successful matching grant proposals to Sarasota County. One was
+            for a new outdoor light system to reduce light pollution. Another was for removal of invasive plant
+            growth in the Pine Run common areas. She was working hard on a new proposal for a natural fence. She
+            always listened to the Community and worked for the common good of Pine Run. Her rich professional
+            background in managing negotiations was invaluable.</p>
+        <p>She also served as president of the Pine Run Social Club and was very active in organizing social events.
+            She loved to dance, enjoyed trivia contests and was an avid mahjong player. She tutored Spanish speaking
+            adults in English. She often commented how much she loved Pine Run and all the friendly people who live
+            and snowbird there.</p>
+        <p>A charming and heartfelt response from one of Pine Run’s residents:</p>
+        <p class="quote">&OpenCurlyDoubleQuote;Kate made so many positive changes to Pine Run and the Social Club. She
+            spoke clearly and
+            always had an understandable answer to any question that someone in Pine Run was wondering
+            about.&CloseCurlyDoubleQuote;</p>
+        <p>She was pre-deceased by her husband Rich (2019). She is survived by, among others, her son, Rendall
+            Koski, and Rendall’s son, Kauko (Lahti, Finland); her son in-law and daughter in-law, Richard and Liz
+            Provencher, and their two children: son, Richard Provencher III, and daughter, Regann DiCamillo
+            (Enfield, CT); her sister and brother-in-law, Anne and Red Golden (Walla Walla, WA); and her brother and
+            sister-in-law, David and Zelda Moore (Durham, NH); plus many cousins and nieces and nephews.</p>
+    </main>
+    <aside class="container">
+        <p>Kate's memorial site will be updated over time with photos, testimonials from friends and family, and her
+            research and writings. If you would like to leave a comment, memory, testimonial or condolences, or have a
+            comment about the website, or would like to be notified about website updates, please fill out the form
+            below.</p>
+
+        <form name="comment" method="POST" data-netlify="true" netlify-honeypot="website">
+            <input type="hidden" name="form-name" value="comment">
+
+            <!-- Honeypot Field -->
+            <div class="hidden">
+                <label for="website">Website (optional)</label>
+                <input type="text" name="website" id="website">
+            </div>
+
+            <!-- Name -->
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Contact Information -->
+            <label for="contact">Contact Information (email or phone or both)</label>
+            <input type="text" id="contact" name="contact" required>
+
+            <!-- Comment -->
+            <label for="comment">Your Comment</label>
+            <textarea id="comment" name="comment" required></textarea>
+
+            <!-- Public Checkbox -->
+            <input type="checkbox" id="public" name="public" checked>
+            <label for="public" id="public-label">I would like my comment to be shared publicly on the website</label>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Comment</button>
+        </form>
+    </aside>
+
+    <script type="text/javascript">
+        document.querySelector('#public').addEventListener('change', function () {
+            const publicLabel = document.querySelector('#public-label');
+            if (this.checked) {
+                publicLabel.textContent = 'I would like my comment to be shared publicly on the website.';
+            } else {
+                publicLabel.textContent = 'My comment will be kept private.';
+            }
+        });
+    </script>
+
 </body>
+
 </html>
